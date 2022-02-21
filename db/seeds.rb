@@ -7,12 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 require 'open-uri'
-require 'pry-byebug'
 
-url = "https://www.googleapis.com/books/v1/volumes?q=science&key=AIzaSyCGZCM4CcDpgh-aNEYPQcsy-sKcwCEgwIs"
+
+url = "https://www.googleapis.com/books/v1/volumes?q=magic&key=AIzaSyCGZCM4CcDpgh-aNEYPQcsy-sKcwCEgwIs"
 books = URI.open(url).read
 book = JSON.parse(books)
-
 10.times do
   user = User.create!(
     user_name: Faker::Name.name,
@@ -21,18 +20,19 @@ book = JSON.parse(books)
     last_name: Faker::Name.last_name,
     email: "#{Faker::Name.first_name}#{Faker::Name.last_name}@gmail.com"
   )
-  book.first(10) do |result|
-    p result
-    binding.pry
+  book["items"].first(10).each do |result|
+    author = result["volumeInfo"]["authors"]
+    author = "" if author.nil?
+    photo_url = result["volumeInfo"]["imageLinks"]
+    photo_url = "" if result["volumeInfo"]["imageLinks"].nil?
     new_book = Book.new(
-      title: result["items"]["volumeInfo"]["title"],
-      author: result["items"]["volumeInfo"]["authors"][0],
+      title: result["volumeInfo"]["title"],
+      author: author[0],
       suggested_price: 10.0,
-      photo_url: result["items"]["volumeInfo"]["imageLinks"]["thumbnail"]
+      photo_url: photo_url["thumbnail"]
     )
-    puts new_book
     new_book.user = user
-    new_book.save!
+    new_book.save
   end
 end
 

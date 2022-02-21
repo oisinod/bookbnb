@@ -1,8 +1,4 @@
 <h1>All the books</h1>
-<ul>
-  <% @books.each do |book| %>
-    <li><%= link_to "#{book.title} - #{book.author} - #{book.suggested_price}", book_path(book) %></li>
-  <% end %>
-</ul>
 
+<%= render "shared/grid" %>
 <h3><%= link_to "Add a new book", new_book_path %></h3>

@@ -1,7 +1,11 @@
-<h1>Book page</h1>
-<h2><%= "#{@book.title} - added by #{@book.user.user_name}" %></h2>
-<h3> <%= @book.author %></h3>
-<p><%= @book.description %></p>
-<p><%= "Suggested price: #{@book.suggested_price} per day. " %></p>
-<%= link_to "Edit this book",  edit_book_path(@book) %>
-<%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}  %>
+<div class="container">
+  <h1>Book page</h1>
+  <h2><%= "#{@book.title} - added by #{@book.user.user_name}" %></h2>
+  <h3> <%= @book.author %></h3>
+  <p><%= @book.description %></p>
+  <%= image_tag @book.photo_url unless @book.photo_url.nil? %>
+  <p><%= "Suggested price: #{@book.suggested_price} per day. " %></p>
+
+  <%= link_to "Edit this book",  edit_book_path(@book) %>
+  <%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}  %>
+</div>

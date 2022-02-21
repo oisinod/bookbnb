@@ -1,0 +1,9 @@
+<div class="book-grid">
+  <% @books.each do |book| %>
+  <div class="book">
+    <%= image_tag book.photo_url unless book.photo_url.nil? %>
+    <%= image_tag "https://images.unsplash.com/photo-1546521343-4eb2c01aa44b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" if book.photo_url.nil?%>
+    <%= link_to "#{book.title} - #{book.author} - #{book.suggested_price}", book_path(book) %>
+  </div>
+  <% end %>
+</div>
