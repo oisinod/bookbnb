@@ -18,3 +18,29 @@
 .profiler-results {
   display: none;
 }
+
+.search {
+  flex-grow: 0.3;
+}
+
+.search-form-control {
+  position: relative;
+
+  .btn {
+    position: absolute;
+    top: 6px;
+    bottom: 8px;
+    right: 8px;
+  }
+
+  .form-control {
+    height: 3rem;
+    border: 1px solid #E7E7E7;
+    border-radius: 25px;
+  }
+
+ .form-control:focus {
+    border: 1px solid #083d6848;
+    outline: none !important;
+  }
+}
