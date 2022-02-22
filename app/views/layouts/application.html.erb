@@ -43,7 +43,12 @@
                 <%= link_to "Dashboard", "#", class: "nav-link" %>
               </li>
               <li class="nav-item dropdown">
-                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% if current_user.photo.attached? %>
+                 <% url = cl_image_path current_user.photo.key, height: 300, crop: :fill %>
+              <% else %>
+                <% url = 'https://hszteam.de/wp-content/uploads/2021/01/avatar-placeholder.gif' %>
+              <% end %>
+                <%= image_tag "#{url}", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <%= link_to "Add a new book", new_book_path, class: "dropdown-item" %>
                   <%= link_to "Another action", "#", class: "dropdown-item" %>
@@ -54,6 +59,7 @@
               <li class="nav-item">
                 <%= link_to "Login", new_user_session_path, class: "nav-link" %>
               </li>
+              <li> <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
             <% end %>
           </ul>
         </div>
