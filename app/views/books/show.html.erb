@@ -9,12 +9,12 @@
     </div>
 
     <div class="col-12 col-lg-4">
-      <%= image_tag @book.photo_url unless @book.photo_url.nil? %>
+      <%= cl_image_tag @book.photo.key if @book.photo.attached? %>
       <p><%= "Suggested price: #{@book.suggested_price} per day. " %></p>
     </div>
 
     <div class="d-flex justify-content-between">
-      <%= link_to "@book.user.user_name", book_path(@book)  %>
+      <%= link_to "#{@book.user.user_name}", user_path(@book.user)  %>
       <%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}  %>
       <%= link_to "Edit this book",  edit_book_path(@book) %>
     </div>
