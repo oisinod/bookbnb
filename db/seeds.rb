@@ -9,7 +9,7 @@ require 'faker'
 require 'open-uri'
 
 
-url = "https://www.googleapis.com/books/v1/volumes?q=magic&key=AIzaSyCGZCM4CcDpgh-aNEYPQcsy-sKcwCEgwIs"
+url = "https://www.googleapis.com/books/v1/volumes?q=science&key=AIzaSyCGZCM4CcDpgh-aNEYPQcsy-sKcwCEgwIs"
 books = URI.open(url).read
 book = JSON.parse(books)
 10.times do
