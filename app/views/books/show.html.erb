@@ -1,23 +1,23 @@
 <div class="container">
-  <h1>Book page</h1>
-  <h2><%= "#{@book.title} - added by #{@book.user.user_name}" %></h2>
-  <h3> <%= @book.author %></h3>
-  <p><%= @book.description %></p>
-  <%= image_tag @book.photo_url unless @book.photo_url.nil? %>
-  <p><%= "Suggested price: #{@book.suggested_price} per day. " %></p>
 
-  <%= link_to "Edit this book",  edit_book_path(@book) %>
-  <%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}  %>
+  <div class="row">
 
+    <div class="col-12 col-lg-8">
+      <h2><%= "#{@book.title}"%></h2>
+      <h5> Author: <%= @book.author %></h5>
+      <p> Description: <%= @book.description %></p>
+    </div>
 
-  <h2>This books' bookings</h2>
-  <h3> <%= link_to "Book this book!", new_book_booking_path(@book) %> </h3>
-<ul>
+    <div class="col-12 col-lg-4">
+      <%= image_tag @book.photo_url unless @book.photo_url.nil? %>
+      <p><%= "Suggested price: #{@book.suggested_price} per day. " %></p>
+    </div>
 
-  <% @bookings.each do |booking| %>
-  <li><%= link_to "#{booking.start_date} until #{booking.end_date} by #{booking.user.first_name} - Booking id: #{booking.id}",
-                  booking_path(booking) %></li>
-  <% end %>
-</ul>
+    <div class="d-flex justify-content-between">
+      <%= link_to "@book.user.user_name", book_path(@book)  %>
+      <%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}  %>
+      <%= link_to "Edit this book",  edit_book_path(@book) %>
+    </div>
 
+  </div>
 </div>
