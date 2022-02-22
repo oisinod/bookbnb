@@ -8,5 +8,12 @@
   <h1><%= @user.first_name %> <%= @user.last_name %></h1>
   <p><%= @user.user_name %></p>
   <p><%= @user.location %></p>
+  <% @outgoing_bookings.each do |booking| %>
+   <p> <%= "⭐" * booking.review.rating %>
+       <%= booking.review.content %>
+   </p>
+  <% end %>
   <%= render "shared/grid" %>
+
+
 </div>
