@@ -1,0 +1,12 @@
+<div class="container">
+  <% if @user.photo.attached? %>
+    <% url = cl_image_path @user.photo.key, height: 300, crop: :fill %>
+  <% else %>
+    <% url = 'https://hszteam.de/wp-content/uploads/2021/01/avatar-placeholder.gif' %>
+  <% end %>
+  <img src=  <%= url %> alt=<%= @user.user_name %>>
+  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+  <p><%= @user.user_name %></p>
+  <p><%= @user.location %></p>
+  <%= render "shared/grid" %>
+</div>
