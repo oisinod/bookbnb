@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :books
   has_many :bookings
-  has_many :bookings, through: :books
   validates :first_name, :last_name, :user_name, :email, presence: true
+
+  # TO DO MAKE METHOD - MY BOOKINGS
+  # DB QUERY TO GET BOOKINGS OF MY BOOKS
 end
