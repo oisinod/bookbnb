@@ -43,7 +43,7 @@ require 'open-uri'
     end_date: Date.new(2022,2,24),
     status: "Booked"
   )
-  booking.book = Book.first
-  booking.user = User.first
+  booking.book = Book.find(8)
+  booking.user = User.find(2)
   booking.save
   end
