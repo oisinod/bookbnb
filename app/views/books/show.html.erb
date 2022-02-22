@@ -16,7 +16,7 @@
 
   <% @bookings.each do |booking| %>
   <li><%= link_to "#{booking.start_date} until #{booking.end_date} by #{booking.user.first_name} - Booking id: #{booking.id}",
-                  book_booking_path(booking) %></li>
+                  booking_path(booking) %></li>
   <% end %>
 </ul>
 
