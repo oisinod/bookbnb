@@ -8,4 +8,16 @@
 
   <%= link_to "Edit this book",  edit_book_path(@book) %>
   <%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}  %>
+
+
+  <h2>This books' bookings</h2>
+  <h3> <%= link_to "Book this book!", new_book_booking_path(@book) %> </h3>
+<ul>
+
+  <% @bookings.each do |booking| %>
+  <li><%= link_to "#{booking.start_date} until #{booking.end_date} by #{booking.user.first_name} - Booking id: #{booking.id}",
+                  book_booking_path(booking) %></li>
+  <% end %>
+</ul>
+
 </div>
