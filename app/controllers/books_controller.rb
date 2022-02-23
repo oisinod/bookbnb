@@ -2,11 +2,20 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
+    @users = User.all
     @books = Book.all
     @search = params["search"]
     if @search.present?
       @name = @search["query"]
       @books = Book.where("title ILIKE ?", "%#{@name}%")
+    end
+
+    @markers = @users.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+
+      }
     end
   end
 
