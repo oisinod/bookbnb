@@ -12,6 +12,8 @@ url = "https://www.googleapis.com/books/v1/volumes?q=science&key=AIzaSyCGZCM4CcD
 books = URI.open(url).read
 book = JSON.parse(books)
 users = []
+book_list = []
+
 20.times do
   user = User.new(
     user_name: Faker::Name.name,
@@ -25,7 +27,7 @@ users = []
   users.push(user)
 end
 
-book["items"].each do |result|
+book["items"].first(100).each do |result|
     author = result["volumeInfo"]["authors"]
     author = "Unknown" if author.nil?
     photo_url = result["volumeInfo"]["imageLinks"]
@@ -38,22 +40,19 @@ book["items"].each do |result|
     )
     new_book.user = users.sample
     new_book.save!
-    puts "book created with user: #{new_book.user}"
+    book_list.push(new_book)
 end
-
 
 ### SEED FOR BOOKINGS
 
-# 50.times do
-
-# 5.times do
-#   booking = Booking.new(
-#     price: 10,
-#     start_date: Date.new(2022,2,22),
-#     end_date: Date.new(2022,2,24),
-#     status: "Booked"
-#   )
-#   booking.book = Book.find(8)
-#   booking.user = User.find(2)
-#   booking.save
-#   end
+100.times do
+  booking = Booking.new(
+    price: rand(0.5..6.0),
+    start_date: Date.new(2022,2,22),
+    end_date: Date.new(2022,2,24),
+    status: "Booked"
+  )
+  booking.book = book_list.sample
+  booking.user = users.sample
+  booking.save!
+end
