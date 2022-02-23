@@ -10,4 +10,8 @@ class User < ApplicationRecord
 
   # TO DO MAKE METHOD - MY BOOKINGS
   # DB QUERY TO GET BOOKINGS OF MY BOOKS
+  def my_bookings
+    @user = self
+    @bookings = Booking.where("user_id = :id", id: @user.id)
+  end
 end

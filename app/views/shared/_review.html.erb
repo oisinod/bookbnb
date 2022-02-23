@@ -1,0 +1,12 @@
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+  </button>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <%= simple_form_for(@review) do |f| %>
+      <%= f.input :rating, collection: 1..5 %>
+      <%= f.input :content %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
