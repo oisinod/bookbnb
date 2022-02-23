@@ -13,5 +13,4 @@ import "jquery-bar-rating"
     });
     });
      }
-
    }
