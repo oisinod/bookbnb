@@ -1,22 +1,24 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-4">
-      <%= image_tag @book.photo_url unless @book.photo_url.nil? %>
-    </div>
-    <div class="col-8">
+
+    <div class="col-12 col-lg-8">
       <h2><%= "#{@book.title}"%></h2>
       <h5> Author: <%= @book.author %></h5>
       <p> Description: <%= @book.description %></p>
-      <p><%= "Suggested price: #{@book.suggested_price} € per day. " %></p>
-      <p>Owner: <%= link_to "#{@book.user.user_name}", user_path(@book.user)  %></p>
     </div>
+
+    <div class="col-12 col-lg-4">
+      <%= cl_image_tag @book.photo.key if @book.photo.attached? %>
+      <p><%= "Suggested price: #{@book.suggested_price} per day. " %></p>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <%= link_to"Make a booking", new_book_booking_path(@book) %>
+      <%= link_to "#{@book.user.user_name}", user_path(@book.user)  %>
+      <%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}  %>
+      <%= link_to "Edit this book",  edit_book_path(@book) %>
+    </div>
+
   </div>
-  <div class="row">
-    <div class="col-12 d-flex justify-content-between m-3">
-        <%= link_to"Make a booking", new_book_booking_path(@book), class: "btn btn-ghost"  %>
-        <%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"} , class: "btn btn-ghost" %>
-        <%= link_to "Edit this book",  edit_book_path(@book) , class: "btn btn-ghost" %>
-    </div>
-    </div>
 </div>
