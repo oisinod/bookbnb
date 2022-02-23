@@ -27,7 +27,7 @@ book_list = []
   users.push(user)
 end
 
-book["items"].first(100).each do |result|
+book["items"].each do |result|
     author = result["volumeInfo"]["authors"]
     author = "Unknown" if author.nil?
     photo_url = result["volumeInfo"]["imageLinks"]
