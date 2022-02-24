@@ -1,9 +1,9 @@
 .book-grid{
+  margin-left: 16px;
+  flex-grow: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
-  width: 80%;
-  margin: 0 auto;
 }
 
 .book {
@@ -21,4 +21,22 @@
 
 .book img{
   height: 180px;
+}
+
+@media(max-width: 1555px) {
+  .book-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media(max-width: 1180px) {
+  .book-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 790px) {
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
 }

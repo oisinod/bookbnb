@@ -8,14 +8,16 @@ export default class extends Controller {
   }
 
   connect() {
+    console.log("1")
     mapboxgl.accessToken = this.apiKeyValue
-
+    console.log("2")
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
-    this.#addMarkersToMap()
-    this.#fitMapToMarkers()
+    console.log(3)
+    // this.#addMarkersToMap()
+    // this.#fitMapToMarkers()
   }
     #addMarkersToMap() {
       this.markersValue.forEach((marker) => {
