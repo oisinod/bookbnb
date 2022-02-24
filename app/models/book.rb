@@ -9,7 +9,7 @@ class Book < ApplicationRecord
   pg_search_scope :global_search,
     against: [ :title, :author, :description ],
     associated_against: {
-      user: [ :user_name ]
+      user: [ :user_name, :first_name, :last_name ]
     },
     using: {
       tsearch: { prefix: true }
