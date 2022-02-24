@@ -16,7 +16,7 @@ class BooksController < ApplicationController
         lat: user.latitude,
         lng: user.longitude,
         info_window: render_to_string(partial: "info_window", locals: { user: user })
-      } 
+      }
     end
   end
 
@@ -50,7 +50,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book.delete
+    @book.destroy
     redirect_to books_path
   end
 

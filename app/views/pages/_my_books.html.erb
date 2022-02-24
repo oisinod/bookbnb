@@ -11,8 +11,8 @@
         <li class="list-group-item"><strong>Author: </strong> <%= "#{book.author}" %></li>
         <li class="list-group-item"><strong>Suggested price: </strong> <%= "#{book.suggested_price} €/day" %></li>
         <li class="list-group-item d-flex justify-content-around">
-        <%= link_to "Delete", "#", class: "btn btn-danger" %>
-        <%= link_to "Edit", "#", class: "btn btn-warning" %>
+        <%= link_to "Delete", book_path(book) , method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        <%= link_to "Edit", edit_book_path(book), class: "btn btn-warning" %>
         </li>
       </ul>
     </div>
