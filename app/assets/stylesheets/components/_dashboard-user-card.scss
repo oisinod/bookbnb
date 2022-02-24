@@ -1,0 +1,82 @@
+.main-dashboard-card .card {
+    width: 300px;
+    border: none;
+    border-radius: 15px;
+    padding: 8px;
+    background-color: #fff;
+    position: relative;
+    top:0px;
+    height: 370px;
+  }
+  .main-dashboard-card{
+  align-self: flex-start;
+padding-left:150px;
+}
+.booking-outgoing-requests{
+
+
+}
+
+.profile-card-image{
+  height: 50%;
+}
+
+.card-info-text-top{
+  text-decoration: none;
+  color: black;
+  align-self: center;
+}
+
+.main-dashboard-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.upper {
+    height: 100px
+}
+
+.requests {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  align-self: flex-start;
+}
+.upper img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px
+}
+
+.user {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.profile img {
+    height: 80px;
+    width: 80px;
+    margin-top: 2px
+}
+
+.profile {
+  margin: 0 auto;
+    height: 90px;
+    width: 90px;
+    border: 3px solid #fff;
+    border-radius: 50%
+}
+
+
+.stats span {
+    font-size: 29px
+}
+
+.dashboard-card-info{
+  display:flex;
+  justify-content: space-between;
+}
