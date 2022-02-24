@@ -6,17 +6,20 @@
     <% else %>
       <% url = 'https://images.unsplash.com/photo-1546521343-4eb2c01aa44b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' %>
     <% end %>
-    <div class="card-book" style="width: 15rem;">
-      <%= image_tag url %>
+    <div class="card-book">
+      <%= image_tag url, class: "book-image" %>
       <div class="card-book-infos">
-        <h2><%= link_to book.title, book_path(book) %></h2>
-        <p><%= book.description %></p>
+        <div>
+          <h2><%= link_to book.title, book_path(book) %></h2>
+          <p><strong>Author: </strong> <%= "#{book.author}" %></p>
+          <p><strong>Description: </strong><%= book.description %></p>
+          <p><strong>Owner: </strong><%= link_to "#{book.user.first_name} #{book.user.last_name} (#{book.user.location})", book_path(book) %></p>
+        </div>
+        <div class="card-book-pricing">
+          <p ><strong>Suggested price: </strong> <%= "#{book.suggested_price} €/day" %></p>
+        </div>
+        <%= image_tag 'https://hszteam.de/wp-content/uploads/2021/01/avatar-placeholder.gif', class: "avatar card-book-user avatar-bordered dropdown-toggle", id: "dropdownMenuLink", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>Author: </strong> <%= "#{book.author}" %></li>
-        <li class="list-group-item"><strong>Suggested price: </strong> <%= "#{book.suggested_price} €/day" %></li>
-        <li class="list-group-item"><strong>Owner: </strong><%= link_to "#{book.user.first_name} #{book.user.last_name} (#{book.user.location})", book_path(book) %></li>
-      </ul>
     </div>
   <% end %>
 </div>
