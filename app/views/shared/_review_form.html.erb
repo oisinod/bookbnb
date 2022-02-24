@@ -1,9 +1,9 @@
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Write a review of your booking
+    Write a review of this booking
   </button>
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
-    <%= simple_form_for(@review) do |f| %>
+    <%= simple_form_for([booking , @review]) do |f| %>
       <%= f.input :rating, collection: 1..5, id: "ratings", input_html: {"data-controller": "review-form"}  %>
       <%= f.input :content %>
       <%= f.submit %>

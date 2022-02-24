@@ -9,6 +9,7 @@ class PagesController < ApplicationController
     @users = User.all
     @my_bookings = current_user.bookings
     @total_bookings = total_bookings
+    @review = Review.new
   end
 
   def total_bookings

@@ -1,6 +1,17 @@
 class ReviewsController < ApplicationController
 
   def create
-    # TODO create the review = corresponding to booking = should actually be on the dash - sort tomorrow
+    @review = Review.new(review_params)
+    @booking = Booking.find(params[:booking_id])
+    @review.booking = @booking
+    if @review.save
+     redirect_to dashboard_path(q:"completed")
+    end
+  end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:rating, :content)
   end
 end
