@@ -4,9 +4,9 @@
       <%= f.input :title %>
       <%= f.input :author %>
       <%= f.input :description %>
-      <%= f.input :suggested_price%>
+      <%= f.input :suggested_price, label: "Suggested price per day (€)" %>
       <%= f.input :photo, as: :file%>
-      <%= f.submit %>
+      <%= f.submit 'Add book', class: 'btn btn-ghost' %>
     <% end %>
   </div>
 </div>
