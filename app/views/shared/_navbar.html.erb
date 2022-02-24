@@ -36,6 +36,7 @@
                 <%= image_tag "#{url}", class: "avatar dropdown-toggle", id: "dropdownMenuLink", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <div class="dropdown-menu  dropdown-menu-right dropdown-menu-end" aria-labelledby="dropdownMenuLink">
                   <%= link_to "Add a new book", new_book_path, class: "dropdown-item" %>
+                  <%= link_to "My books", dashboard_path(q: "all"), class: "dropdown-item" %>
                   <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
                   <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                 </div>
