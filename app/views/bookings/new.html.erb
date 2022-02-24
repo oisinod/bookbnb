@@ -1,8 +1,11 @@
 <div class="container">
-  <%= simple_form_for([@book, @booking]) do |f| %>
-    <%= f.input :start_date, html5:true %>
-    <%= f.input :end_date, html5:true %>
-    <%= f.input :price %>
-    <%= f.submit, class: "btn btn-ghost" %>
-  <% end %>
+  <div class="card">
+    <%= simple_form_for([@book, @booking]) do |f| %>
+      <% price_default = @book.suggested_price %>
+      <%= f.input :start_date, html5:true %>
+      <%= f.input :end_date, html5:true %>
+      <%= f.input :price, label: 'Price offer (in €)', input_html: { placeholder: "Suggested: #{price_default} € per day" } %>
+      <%= f.submit 'Request', class: 'btn btn-ghost'  %>
+    <% end %>
+  </div>
 </div>
