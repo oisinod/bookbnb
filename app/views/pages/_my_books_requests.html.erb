@@ -1,7 +1,7 @@
 <h2 class="text-center">Requests for your books</h2>
 
   <% @books.each do |book| %>
-      <% @bookings.where(book_id: book.id).each do |booking| %>
+      <% @bookings.where(book_id: book.id, status: "pending").each do |booking| %>
         <div class="card-product">
           <img src=<%= book.photo_url %> />
           <div class="card-product-infos">
