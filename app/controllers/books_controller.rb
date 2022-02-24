@@ -4,11 +4,10 @@ class BooksController < ApplicationController
 
   def index
     @users = User.all
-    @books = Book.all
-    @search = params["search"]
-    if @search.present?
-      @name = @search["query"]
-      @books = Book.where("title ILIKE ?", "%#{@name}%")
+    if params[:search].present?
+      @books = Book.global_search(params[:search][:query])
+    else
+      @books = Book.all
     end
 
     @markers = @users.geocoded.map do |user|
