@@ -1,0 +1,20 @@
+<h2 class="text-center">Requests for your books</h2>
+
+  <% @books.each do |book| %>
+      <% @bookings.where(book_id: book.id, status: "pending").each do |booking| %>
+        <div class="card-product">
+          <img src=<%= book.photo_url %> />
+          <div class="card-product-infos">
+            <h2><%= link_to book.title, book_path(book) %>, current status: <%= booking.status %></h2>
+            <p>Price: <%= booking.price %> €</p>
+            <p>From: <%= booking.start_date %></p>
+            <p>Until: <%= booking.end_date %></p>
+            <p>To: <%= link_to @users.find(booking.user_id).user_name, @users.find(booking.user_id) %></p>
+          </div>
+          <div class="booking-options">
+          <%= link_to "✅", booking_path(booking, q: 1), method: :patch , data: { confirm: "Are you sure?"} %>
+          <%= link_to "❌", booking_path(booking, q: 0), method: :patch , data: { confirm: "Are you sure?"} %>
+          </div>
+        </div>
+      <% end %>
+  <% end %>

@@ -20,6 +20,13 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @booking = Booking.find(params[:id])
+    params[:q].to_i == 1 ? @booking.status = "confirmed" : @booking.status = "declined"
+    @booking.save
+    redirect_to dashboard_path, notice: "Booking #{@booking.status} successfully"
+  end
+
   private
 
   def booking_params

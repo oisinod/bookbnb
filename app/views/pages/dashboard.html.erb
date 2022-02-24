@@ -1,32 +1,13 @@
-<h2 class="text-center"> Your booking requests:</h2>
-  <% @all_books.each do |book| %>
-      <% @my_bookings.where(book_id: book.id).each do |booking| %>
-        <div class="card-product">
-          <img src=<%= book.photo_url %> />
-          <div class="card-product-infos">
-            <h2><%= book.title %></h2>
-            <p>Price: <%= booking.price %> €</p>
-            <p>From: <%= booking.start_date %></p>
-            <p>Until: <%= booking.end_date %></p>
-            <p>Owner: <%= @users.find(book.user_id).user_name %></p>
-          </div>
-        </div>
-      <% end %>
-  <% end %>
-<h2 class="text-center">Requests for your books</h2>
-
-
-  <% @books.each do |book| %>
-      <% @bookings.where(book_id: book.id).each do |booking| %>
-        <div class="card-product">
-          <img src=<%= book.photo_url %> />
-          <div class="card-product-infos">
-            <h2><%= book.title %></h2>
-            <p>Price: <%= booking.price %> €</p>
-            <p>From: <%= booking.start_date %></p>
-            <p>Until: <%= booking.end_date %></p>
-            <p>To: <%= @users.find(booking.user_id).user_name %></p>
-          </div>
-        </div>
-      <% end %>
-  <% end %>
+<% if params[:q] == "all" %>
+<div class="dashboard-header d-flex justify-content-center">
+  <h2 class= " d-inline p-2" >Your books: </h2>
+  <h2 class= " d-inline p-2"> ↩ Go back</h2>
+</div>
+  <%= render "my_books" %>
+<% elsif params[:q] == "completed" %>
+  <%= render "shared/completed_bookings" %>
+<% else %>
+  <%= render "my_requests" %>
+<%#if params[:view] == request%>
+  <%= render "my_books_requests" %>
+<% end %>
