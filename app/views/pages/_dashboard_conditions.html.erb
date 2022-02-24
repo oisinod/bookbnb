@@ -1,0 +1,12 @@
+ <% if params[:q] == "all" %>
+    <%= render "my_books" %>
+  <% elsif params[:q] == "completed" %>
+    <%= render "shared/completed_bookings" %>
+  <% else %>
+  <div class="requests">
+
+      <%= render "my_requests" %>
+    <%#if params[:view] == request%>
+      <%= render "my_books_requests" %>
+  </div>
+  <% end %>
