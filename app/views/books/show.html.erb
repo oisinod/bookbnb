@@ -1,22 +1,30 @@
-<div class="container">
+<% if @book.photo.attached? %>
+  <% url = cl_image_path @book.photo.key %>
+<% else %>
+  <% url = 'https://images.unsplash.com/photo-1546521343-4eb2c01aa44b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' %>
+<% end %>
 
-  <div class="row">
-    <div class="col-4">
-      <%= image_tag @book.photo_url unless @book.photo_url.nil? %>
+<div class="container">
+  <div class="card">
+    <div class="row">
+      <div class="col-3">
+        <%= image_tag url %>
+      </div>
+      <div class="col-9">
+        <h2><%= "#{@book.title}"%></h2>
+        <h5> Author: <%= @book.author %></h5>
+        <p> Description: <%= @book.description %></p>
+        <p><%= "Suggested price: #{@book.suggested_price} € per day. " %></p>
+        <p>Owner: <%= link_to "#{@book.user.user_name}", user_path(@book.user)  %></p>
+      </div>
     </div>
-    <div class="col-8">
-      <h2><%= "#{@book.title}"%></h2>
-      <h5> Author: <%= @book.author %></h5>
-      <p> Description: <%= @book.description %></p>
-      <p><%= "Suggested price: #{@book.suggested_price} € per day. " %></p>
-      <p>Owner: <%= link_to "#{@book.user.user_name}", user_path(@book.user)  %></p>
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center m-3">
+          <%= link_to"Make a booking", new_book_booking_path(@book), class: "btn btn-ghost"  %>
+          <%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"} , class: "btn btn-ghost" %>
+          <%= link_to "Edit this book",  edit_book_path(@book) , class: "btn btn-ghost" %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12 d-flex justify-content-between m-3">
-        <%= link_to"Make a booking", new_book_booking_path(@book), class: "btn btn-ghost"  %>
-        <%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"} , class: "btn btn-ghost" %>
-        <%= link_to "Edit this book",  edit_book_path(@book) , class: "btn btn-ghost" %>
-    </div>
-  </div>
+
 </div>

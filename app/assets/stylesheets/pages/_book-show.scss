@@ -3,9 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.container img{
-  height: 240px;
-  width:139px;
+  img{
+    width: 100%;
+    height: auto;
+  }
 }
