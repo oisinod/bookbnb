@@ -18,4 +18,10 @@ class PagesController < ApplicationController
     end
     bookings.sum
   end
+
+  def total_reviews
+    bookings = current_user.books.map do |book|
+      book.bookings.where(status: "completed").count
+    end
+  end
 end

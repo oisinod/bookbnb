@@ -18,8 +18,8 @@
         <h2><%= @user.first_name %>'s Books <small>(<%= @user.books.count %>)</small> </h2>
         <%= render "book_show" %>
         <div class="reviews">
-        <h2><%= @user.first_name %>'s Reviews <small>(<%= %>)</small> </h2>
-          <%= render "shared/review_form" %>
+        <h2><%= @user.first_name %>'s Reviews <small>(<%=  %>)</small> </h2>
+
         </div>
       </div>
     </div>
