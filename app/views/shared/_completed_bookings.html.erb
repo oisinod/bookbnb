@@ -1,5 +1,5 @@
 <div class="">
-  <h2 class="text-center">Your previous bookings:</h2>
+  <h2 class="text-center">Books you've borrowed:</h2>
   <% current_user.bookings.where(status:"confirmed").each do |booking|%>
    <div class="card-product">
             <img src=<%= booking.book.photo_url %> />
@@ -8,7 +8,7 @@
               <p>Price: <%= booking.price %> €</p>
               <p>From: <%= booking.start_date %></p>
               <p>Until: <%= booking.end_date %></p>
-              <p>To: <%= link_to @users.find(booking.user_id).user_name, @users.find(booking.user_id) %></p>
+              <p>To: <%= link_to @users.find(booking.book.user_id).user_name, @users.find(booking.book.user_id) %></p>
             </div>
             <div class="booking-options">
             </div>
