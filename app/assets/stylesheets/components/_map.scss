@@ -1,3 +1,10 @@
+.map {
+  height: 100vh;
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
+
 .mapboxgl-popup {
   max-width: 200px;
   font-family: "Open Sans", Roboto;
@@ -15,4 +22,10 @@
 .mapboxgl-popup-content ul {
   list-style-type: none;
   text-align: left;
+}
+
+@media(max-width: 1555px) {
+  .map {
+    margin-right: 10%;
+  }
 }
