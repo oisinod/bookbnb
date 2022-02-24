@@ -1,7 +1,15 @@
 
-<h2><%= user.user_name %></h2>
+<div class="infobox">
+  <h2><%= user.user_name %></h2>
+
+  <%= link_to user_path(user) do %>
+    <%= image_tag "https://images.unsplash.com/photo-1519682337058-a94d519337bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80", class: "mapbox-avatar" %>
+  <% end %>
+</div>
+
 <ul>
-<% user.books.first(5).each do |book| %>
-<li><%= link_to book.title, book_path(book), html:{class: "map-box-list"}  %></li>
-<% end %>
+  <% user.books.first(5).each do |book| %>
+    <li><%= link_to book.title, book_path(book),
+    html:{class: "map-box-list"}  %></li>
+  <% end %>
 </ul>
