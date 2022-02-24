@@ -4,6 +4,8 @@
   <h2 class= " d-inline p-2"> ↩ Go back</h2>
 </div>
   <%= render "shared/grid" %>
+<% elsif params[:q] == "completed" %>
+  <%= render "shared/completed_bookings" %>
 <% else %>
   <%= render "my_requests" %>
 <%#if params[:view] == request%>
