@@ -1,0 +1,20 @@
+<% @books.each do |book| %>
+  <% if book.photo.attached? %>
+    <% url = cl_image_path book.photo.key %>
+  <% else %>
+    <% url = 'https://images.unsplash.com/photo-1546521343-4eb2c01aa44b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' %>
+  <% end %>
+  <div class="card-product">
+    <%= image_tag url, class: "book-image" %>
+    <div class="card-product-infos">
+      <div>
+        <h2><%= link_to book.title, book_path(book) %></h2>
+        <p><strong>Author: </strong> <%= "#{book.author}" %></p>
+        <p><strong>Description: </strong><%= book.description %></p>
+      </div>
+      <div class="card-book-pricing">
+        <p ><strong>Suggested price: </strong> <%= "#{book.suggested_price} €/day" %></p>
+      </div>
+    </div>
+  </div>
+<% end %>

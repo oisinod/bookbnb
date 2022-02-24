@@ -5,20 +5,20 @@
 <% end %>
 
 <div class="container">
-  <div class="card profile-page">
+  <div class="profile-page card">
     <div class="row pt-3">
       <div class="col-4">
         <img src=  <%= url %> class= "avatar-large" alt= <%= @user.user_name %>>
-        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
         <p><strong>Username: </strong><%= @user.user_name %></p>
         <p><strong>Location: </strong><%= @user.location %></p>
         <p><strong>Member since: </strong><%= @user.created_at.day %>.<%= @user.created_at.month %>.<%= @user.created_at.year %></p>
       </div>
-      <div class="col-7">
-        <h2><%= @user.first_name %>'s Books (<%= @user.books.count %>) </h2>
-        <%= render "shared/grid" %>
+      <div class="col-8">
+        <h2><%= @user.first_name %>'s Books <small>(<%= @user.books.count %>)</small> </h2>
+        <%= render "book_show" %>
         <div class="reviews">
-        <h2><%= @user.first_name %>'s Reviews (<%=  %>) </h2>
+        <h2><%= @user.first_name %>'s Reviews <small>(<%= %>)</small> </h2>
           <%= render "shared/review_form" %>
         </div>
       </div>
