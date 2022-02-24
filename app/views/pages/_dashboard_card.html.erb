@@ -6,26 +6,26 @@
               <% if current_user.photo.attached? %>
                  <% url = cl_image_path current_user.photo.key, height: 300, crop: :fill %>
               <% else %>
-                <% url = 'https://hszteam.de/wp-content/uploads/2021/01/avatar-placeholder.gif' %>
+                <% url = 'https://avatars.githubusercontent.com/u/80196301?v=4' %>
               <% end %>
               <%= image_tag "#{url}", class: "rounded-circle" %>
         </div>
         <div class="text-center">
-            <h4 class="mb-0"><%= current_user.user_name %></h4> <span class="text-muted d-block mb-2"><%= current_user.location %></span> <button class="btn btn-primary btn-sm follow">My profile</button>
+            <h4 class="mb-0"><%= current_user.user_name %></h4> <span class="text-muted d-block mb-2"><%= current_user.location %></span> <button class="btn btn-ghost btn-sm follow">My profile</button>
             <div class="d-flex justify-content-between dashboard-card-info align-items-end mt-4 ">
                 <div class="stats">
                 <%= link_to dashboard_path(q: "all") do %>
-                    <h6 class="mb-0 card-info-text-top"> Books  </h6> <span><%= current_user.books.count %></span>
+                    <h6 class="mb-0 card-info-text-top">My books  </h6> <span><%= current_user.books.count %></span>
                 </div>
                 <% end %>
-                <%= link_to dashboard_path(q: "all") do %>
+                <%= link_to dashboard_path() do %>
                 <div class="stats mx-3">
-                    <h6 class=" card-info-text-top mb-0">Outgoing <br> requests</h6> <span><%= current_user.bookings.count %></span>
+                    <h6 class=" card-info-text-top mb-0">My outgoing <br> requests</h6> <span><%= current_user.bookings.count %></span>
                 </div>
                     <% end %>
-                <%= link_to dashboard_path(q: "all") do %>
+                <%= link_to dashboard_path() do %>
                 <div class="stats">
-                    <h6 class="mb-0 card-info-text-top">Incoming <br> requests</h6> <span><%= @total_bookings %></span>
+                    <h6 class="mb-0 card-info-text-top">My incoming <br> requests</h6> <span><%= @total_bookings %></span>
                 </div>
                     <% end %>
             </div>

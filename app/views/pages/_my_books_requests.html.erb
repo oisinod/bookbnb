@@ -1,5 +1,5 @@
 <div class="">
-  <h2 class="text-center">Requests for your books</h2>
+  <h2 class="text-center pt-5">Requests for your books</h2>
 
     <% @books.each do |book| %>
         <% @bookings.where(book_id: book.id, status: "pending").each do |booking| %>

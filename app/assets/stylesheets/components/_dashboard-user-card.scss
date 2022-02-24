@@ -5,9 +5,11 @@
     padding: 8px;
     background-color: #fff;
     position: relative;
+    top:0px;
     height: 370px;
-}
-.main-dashboard-card{
+  }
+  .main-dashboard-card{
+  align-self: flex-start;
 padding-left:150px;
 }
 .booking-outgoing-requests{
