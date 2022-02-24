@@ -1,8 +1,12 @@
-<%= simple_form_for(@book) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :author %>
-  <%= f.input :description %>
-  <%= f.input :suggested_price%>
-  <%= f.input :photo, as: :file%>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="card">
+    <%= simple_form_for(@book) do |f| %>
+      <%= f.input :title %>
+      <%= f.input :author %>
+      <%= f.input :description %>
+      <%= f.input :suggested_price%>
+      <%= f.input :photo, as: :file%>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
