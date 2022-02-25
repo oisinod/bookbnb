@@ -1,22 +1,22 @@
 <div class="">
-  <h2 class="text-center">Your previous bookings:</h2>
-    <% @books.each do |book| %>
-        <% @bookings.where(book_id: book.id, status: "confirmed").each do |booking| %>
-          <div class="card-product">
-            <img src=<%= book.photo_url %> />
+  <h2 class="text-center">Books you've borrowed:</h2>
+  <% current_user.bookings.where(status:"confirmed").each do |booking|%>
+   <div class="card-product">
+            <img src=<%= booking.book.photo_url %> />
             <div class="card-product-infos">
-              <h2><%= link_to book.title, book_path(book) %></h2>
+              <h2><%= link_to booking.book.title, book_path(booking.book) %></h2>
               <p>Price: <%= booking.price %> €</p>
               <p>From: <%= booking.start_date %></p>
               <p>Until: <%= booking.end_date %></p>
-              <p>To: <%= link_to @users.find(booking.user_id).user_name, @users.find(booking.user_id) %></p>
+              <p>To: <%= link_to @users.find(booking.book.user_id).user_name, @users.find(booking.book.user_id) %></p>
             </div>
             <div class="booking-options">
             </div>
-          </div>
-          <% unless booking.review %>
+  </div>
+                <% unless booking.review %>
                 <%= render "shared/review_form", booking: booking%>
           <% end %>
-        <% end %>
-    <% end %>
+<% end %>
+
+
 </div>

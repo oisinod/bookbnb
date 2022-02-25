@@ -3,9 +3,10 @@
     <%= render "my_books" %>
   <% elsif params[:q] == "completed" %>
     <%= render "shared/completed_bookings" %>
+     <% elsif params[:q] == "reviews" %>
+      <%= render "shared/my_reviews" %>
   <% else %>
-    <%= render "my_requests" %>
-    <%#if params[:view] == request%>
+      <%= render "my_requests" %>
     <%= render "my_books_requests" %>
   <% end %>
 </div>
