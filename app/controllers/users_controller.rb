@@ -5,9 +5,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @books = @user.books
-    @review = Review.new
-    # TO DO: Add pundit to here as it will otherwise show the bookings of all users?
-    @outgoing_bookings = @user.my_bookings
+    @books = @user.books #array of the users books that you're looking at
+    #iterate through each book to see its bookings
+      # IF the booking has a review attached to it
+    @users_reviews = []
+    @books.each do |book|
+      book.bookings.each do |booking|
+        booking.review ? @users_reviews.push(booking.review) : next
+      end
+    end
   end
 end
