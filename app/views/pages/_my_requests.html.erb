@@ -2,7 +2,7 @@
   <h2 class="text-center pb-5"> Your booking requests:</h2>
     <% @all_books.each do |book| %>
         <% @my_bookings.where(book_id: book.id, status: "pending").each do |booking| %>
-          <div class="card-product">
+          <div class="card-product mb-2">
             <img src=<%= book.photo_url %> />
             <div class="card-product-infos">
               <h2><%= "#{book.title} - Current status: #{booking.status}" %></h2>

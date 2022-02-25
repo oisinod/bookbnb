@@ -3,7 +3,7 @@
 
     <% @books.each do |book| %>
         <% @bookings.where(book_id: book.id, status: "pending").each do |booking| %>
-          <div class="card-product">
+          <div class="mb-2 card-product">
             <img src=<%= book.photo_url %> />
             <div class="card-product-infos">
               <h2><%= link_to book.title, book_path(book) %>, current status: <%= booking.status %></h2>
