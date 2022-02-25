@@ -1,3 +1,10 @@
 <div class="container">
-<div class="Reviews analysis"></div>
+<h2 class="Reviews analysis">Here's what others have said about you:</div>
+  <% @my_reviews.each do |review| %>
+  <div class="card">
+  <%= " #{review.content} #{"⭐" * review.rating}"%>
+ <p>Written by:<%= link_to " #{review.booking.user.user_name}", user_path(review.booking.user) %></p>
+  </div>
+  <% end %>
+
 </div>

@@ -5,32 +5,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @books = @user.books
-    @review = Review.new
-    # TO DO: Add pundit to here as it will otherwise show the bookings of all users?
-    @outgoing_bookings = @user.my_bookings
-    @total_reviews = total_reviews(@user)
-    @reviews = my_reviews(@user)
-    @user = User.find(params[:id])
-  end
-
-  def total_reviews(user)
-    total = 0
-    user.books.select do |b|
-       b.bookings.each do |r|
-       total += 1 if r.review
-       end
-     end
-     total
-     raise
-
-     #TO DO FIX THIS
-  end
-
-  def my_reviews(user)
-    reviews = user.books.map do |book|
-      book.bookings.where(status: "confirmed")
+    @books = @user.books #array of the users books that you're looking at
+    #iterate through each book to see its bookings
+      # IF the booking has a review attached to it
+    @users_reviews = []
+    @books.each do |book|
+      book.bookings.each do |booking|
+        booking.review ? @users_reviews.push(booking.review) : next
+      end
     end
-    reviews.select {|booking| booking.length > 0}
   end
 end
