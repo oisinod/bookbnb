@@ -1,9 +1,14 @@
 <div class="booking-outgoing-requests">
   <h2 class="text-center pb-5"> Your booking requests:</h2>
     <% @all_books.each do |book| %>
+        <% if book.photo.attached? %>
+          <% url = cl_image_path book.photo.key %>
+        <% else %>
+          <% url = 'https://images.unsplash.com/photo-1546521343-4eb2c01aa44b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' %>
+        <% end %>
         <% @my_bookings.where(book_id: book.id).each do |booking| %>
           <div class="card-product">
-            <img src=<%= book.photo_url %> />
+            <%= image_tag url, class: "book-image" %>
             <div class="card-product-infos">
               <h2><%= "#{book.title} - Current status: #{booking.status}" %></h2>
               <p>Price: <%= booking.price %> €</p>
