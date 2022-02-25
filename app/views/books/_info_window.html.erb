@@ -3,7 +3,7 @@
   <h2><%= link_to user.user_name, user_path(user), class: "text-decoration-none text-muted" %></h2>
 
   <%= link_to user_path(user) do %>
-    <%= user.photo.attached? ? (cl_image_path user.photo.key, class: "mapbox-avatar") : (image_tag "avatar-placeholder.gif", class: "mapbox-avatar" ) %>
+    <%= user.photo.attached? ? (cl_image_tag user.photo.key, class: "mapbox-avatar") : (image_tag "avatar-placeholder.gif", class: "mapbox-avatar" ) %>
   <% end %>
 </div>
 
