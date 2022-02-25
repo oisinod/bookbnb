@@ -21,8 +21,10 @@
   <div class="row">
     <div class="col-12 d-flex justify-content-between m-3">
         <%= (link_to("Make a booking", new_book_booking_path(@book), class: "btn btn-ghost")) if @book.user != current_user  %>
-        <%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"} , class: "btn btn-ghost" %>
-        <%= link_to "Edit this book",  edit_book_path(@book) , class: "btn btn-ghost" %>
+        <% if @book.user == current_user %>
+          <%= link_to "Delete this book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"} , class: "btn btn-ghost" %>
+          <%= link_to "Edit this book",  edit_book_path(@book) , class: "btn btn-ghost" %>
+        <% end %>
       </div>
     </div>
   </div>
